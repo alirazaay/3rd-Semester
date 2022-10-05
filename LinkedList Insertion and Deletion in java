@@ -1,0 +1,106 @@
+public class Q1 
+{
+	Node head;
+	class Node
+	{
+		String data;
+		Node next;
+		Node(String data)
+		{
+			this.data = data;
+			this.next = null;
+		}
+	}
+	
+	//Adding in Linked List! Add First  Add Last
+			public void addFirst(String data)
+			{
+				Node newNode = new Node(data);
+				if(head==null)
+				{
+					head = newNode;
+					return;
+				}
+				newNode.next = head;
+				head = newNode;
+			}
+			
+			// Add Last
+			public void addLast(String data)
+			{
+				Node newNode = new Node(data);
+				if(head==null)
+				{
+					head = newNode;
+					return;
+				}
+				Node curNode = head;
+				while(curNode.next != null)
+				{
+					curNode = curNode.next;
+				}
+				curNode.next = newNode;
+			}
+			public void prinList()
+			{
+				if(head==null)
+				{
+					System.out.println("List is Empty");
+					return;
+				}
+				Node curNode = head;
+				while(curNode != null)
+				{
+					System.out.print("["+curNode.data + "] - ");
+					curNode = curNode.next;
+				}
+				System.out.print("Null\n"); 
+			}
+			public void deleteFirst()
+			{
+				if(head==null)
+				{
+					System.out.println("List is Empty");
+					return;
+				}
+				head = head.next;
+			}
+			public void deleteLast()
+			{
+				if(head==null)
+				{
+					System.out.println("List is Empty");
+					return;
+				}
+				if(head.next == null)
+				{
+					head = null;
+					return;
+				}
+				Node secondNode = head;
+				Node lastNode = head.next;
+				while(lastNode.next != null)
+				{
+					lastNode = lastNode.next; 
+					secondNode = secondNode.next;
+				}
+				secondNode.next = null;
+			}
+	public static void main(String rise[])
+	{
+		Q1 l1 = new Q1();
+		
+		l1.addFirst("a");
+		l1.addFirst("is");
+		l1.prinList();
+		l1.deleteFirst();
+		l1.prinList();
+		l1.addFirst("is");
+		l1.addFirst("This");
+		l1.prinList();
+		l1.deleteLast();
+		l1.prinList();
+		System.out.println("Hello People! Go tto Hell!");
+		
+	}
+}
